@@ -85,13 +85,16 @@ class Car {
     this.tank = this.tank + gallons;
   }
   drive(distance) {
-    this.odometer = this.odometer + distance;
-    if (this.tank = 0) {
-      this.tank = this.tank-(distance/this.milesPerGallon);
+    const gasLeft = distance/this.milesPerGallon;
+    if (gasLeft <= this.tank) {
+      this.odometer += distance;
+      this.tank -= gasLeft;
     } else {
+      const miles = this.tank * this.milesPerGallon;
+      this.odometer += miles;
+      this.tank = 0;
       return (`I ran out of fuel at ${this.odometer} miles!`);
     }
-
   }
 }
 
@@ -165,8 +168,27 @@ class Instructor extends Lambdasian {
         + `PRAssignment` a method that receives a subject as an argument and returns `student.name has submitted a PR for {subject}`
         + `sprintChallenge` similar to PRAssignment but returns `student.name has begun sprint challenge on {subject}`
 */
-class Student {
-
+class Student extends Lambdasian {
+  constructor(object){
+    super(object)
+    this.previousBackground = object.previousBackground;
+    this.className = object.className;
+    this.favSubjects = object.favSubjects;
+  }
+  listSubjects() {
+    this.favSubjects = ['HTML', 'CSS', 'JS'];
+    return (`Loving {HTML, CSS, JS}!`);
+  }
+  PRAssignment(student, subject) {
+    this.className = student.name;
+    this.favSubjects = subject;
+    return (`${student.name} has submittes a PR for ${subject}`);
+  }
+  sprintChallenge(student, subject) {
+    this.className = student.name;
+    this.favSubjects = subject;
+    return (`${this.className} has begun sprint challenge on ${subject}`);
+  }
 }
 
 /*
@@ -182,7 +204,15 @@ class Student {
         + `standUp` a method that takes in a slack channel and returns `{name} announces to {channel}, @channel standy times!`
         + `debugsCode` a method that takes in a student object and a subject and returns `{name} debugs {student.name}'s code on {subject}`
 */
-class ProjectManager {
+class ProjectManager extends Instructor {
+  constructor(object) {
+    super(object)
+    this.gradClassName = object.gradClassName;
+    this.favInstructor = object.favInstructor;
+  }
+  standup(){
+    this.gradClassName = channel;
+  }
 
 }
 
