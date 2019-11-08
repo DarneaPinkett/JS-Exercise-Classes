@@ -175,19 +175,15 @@ class Student extends Lambdasian {
     this.className = object.className;
     this.favSubjects = object.favSubjects;
   }
-  listSubjects() {
-    this.favSubjects = ['HTML', 'CSS', 'JS'];
-    return (`Loving {HTML, CSS, JS}!`);
+  listSubjects(HTML, CSS, JS) {
+    this.favSubjects.join(HTML, CSS, JS);
+    return (`Loving ${HTML} ${CSS} ${JS}!`);
   }
-  PRAssignment(student, subject) {
-    this.className = student.name;
-    this.favSubjects = subject;
-    return (`${student.name} has submittes a PR for ${subject}`);
+  PRAssignment(subject) {
+    return `${this.name} has submittes a PR for ${subject}`;
   }
-  sprintChallenge(student, subject) {
-    this.className = student.name;
-    this.favSubjects = subject;
-    return (`${this.className} has begun sprint challenge on ${subject}`);
+  sprintChallenge(subject) {
+    return `${this.name} has begun sprint challenge on ${subject}`;
   }
 }
 
@@ -210,10 +206,13 @@ class ProjectManager extends Instructor {
     this.gradClassName = object.gradClassName;
     this.favInstructor = object.favInstructor;
   }
-  standup(){
+  standUp(channel){
     this.gradClassName = channel;
+    return (`${this.name} announces to ${this.gradClassName}, @channel standy times!`);
   }
-
+  debugsCode(student, subject) {
+    return (`${this.name} debugs ${student.name}'s code on ${subject}`);
+  }
 }
 
 /*
