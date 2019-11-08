@@ -175,9 +175,9 @@ class Student extends Lambdasian {
     this.className = object.className;
     this.favSubjects = object.favSubjects;
   }
-  listSubjects(HTML, CSS, JS) {
-    this.favSubjects.join(HTML, CSS, JS);
-    return (`Loving ${HTML} ${CSS} ${JS}!`);
+  listSubjects() {
+    this.favSubjects.join(",");
+    return (`Loving ${this.favSubjects}!`);
   }
   PRAssignment(subject) {
     return `${this.name} has submittes a PR for ${subject}`;
